@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Inicio } from './components/inicio/inicio.tsx'
 import { Dificuldade } from './components/dificuldade/dificuldade.tsx'
 import { Pergunta } from './components/pergunta/pergunta.tsx'
+import { Resultado } from './components/resultado/resultado.tsx'
 
 
 export default function App() {
@@ -11,7 +12,6 @@ export default function App() {
   const [name, setName] = useState('')
   const [difficulty, setDifficulty] = useState('')
 
-  console.log(difficulty)
 
   return (
     <div>
@@ -32,8 +32,17 @@ export default function App() {
           />
         )}
 
-        {page == "pergunta" && (
-          <Pergunta />
+        {page === "pergunta" && (
+          <Pergunta 
+            setPage={setPage}
+          />
+        )}
+
+        {page === "resultado" && (
+          <Resultado 
+            name={name}
+            setPage={setPage}
+          />
         )}
         
     </div>
