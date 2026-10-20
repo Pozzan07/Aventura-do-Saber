@@ -16,18 +16,19 @@ export function Inicio({setPage,name,setName}:InicioProps) {
       console.log(name)
 
     return (
-        <div>
+        <div className='pagina-inicio'>
             <div className='menu'>
-                <h1>Aventura do saber</h1>
-                <p>Oi! Vamos Brincar?</p>
-
-                <form className='name-input' onSubmit={handleSubmit}>
+                <div className='inicio-title'>
+                    <h1>Aventura do saber</h1>
+                    <p>Oi! Vamos Brincar?</p>
+                </div>
+                <form className='inicio-form' onSubmit={handleSubmit}>
                     <label>
                         <span>QUAL O SEU NOME?</span>
-                        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder='Digite Aqui'/>
                     </label>
                     <button className='jogar-btn' type='submit'>
-                        <span>Jogar</span>
+                        Jogar! →
                     </button>
                 </form>
             </div>
