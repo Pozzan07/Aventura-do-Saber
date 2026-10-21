@@ -11,6 +11,7 @@ export default function App() {
   const [page,setPage] = useState("inicio")
   const [name, setName] = useState('')
   const [difficulty, setDifficulty] = useState('')
+  const [points, setPoints] = useState(0)
 
 
   return (
@@ -35,6 +36,9 @@ export default function App() {
         {page === "pergunta" && (
           <Pergunta 
             setPage={setPage}
+            points={points}
+            setPoints={setPoints}
+            difficulty={difficulty}
           />
         )}
 
