@@ -1,5 +1,8 @@
 import './pergunta.css'
 import { useState } from 'react'
+import { questions } from '../../data/data'
+import { MultipleChoice } from './tiposPergunta/MultipleChoice'
+import { DragDrop } from './tiposPergunta/DragDrop'
 
 interface PerguntaProps {
     setPage:(value:string) => void
@@ -11,7 +14,27 @@ interface PerguntaProps {
 export function Pergunta({setPage, points, setPoints, difficulty}:PerguntaProps) {
 
     const [currentQuestion, setCurrentQuestion] = useState(0)
+
+    const difficultyQuestions = questions.filter(
+        question => question.difficulty === difficulty
+    )
+    
+    const question = difficultyQuestions[currentQuestion]
     const progress = (currentQuestion / 10) * 100;
+
+    function handleNext() {
+        if (currentQuestion < 9) {
+            setCurrentQuestion(prev => prev + 1)
+        } else {
+            setPage('resultado')
+        }
+    }
+
+    function handleAnswer(isCorrect: boolean) {
+        if (isCorrect) {
+            setPoints(points + 10)
+        }
+    }
 
     return (
         <div className='pagina'>
@@ -30,14 +53,23 @@ export function Pergunta({setPage, points, setPoints, difficulty}:PerguntaProps)
                 </div>
             </div>
             <div className='menu'>
-                <button onClick={() => {
-                    if (currentQuestion < 9) {
-                        setCurrentQuestion(() => currentQuestion + 1)
-                    } else {
-                        setPage('resultado')
-                    }
-                }}>next</button>
+                <button onClick={() => handleNext()}>next</button>
             </div>
+            {question.type === 'multiple-choice' ? (
+                <MultipleChoice
+                    key={question.id}
+                    question={question}
+                    onAnswer={(_, __, isCorrect) => handleAnswer(isCorrect)}
+                    onNext={handleNext}
+                />
+            ) : (
+                <DragDrop
+                    key={question.id}
+                    question={question}
+                    onAnswer={(_, __, isCorrect) => handleAnswer(isCorrect)}
+                    onNext={handleNext}
+                />
+            )}
         </div>
     )
 }
