@@ -3,9 +3,22 @@ import './resultado.css'
 interface ResultadoProps {
     name:string
     setPage:(value:string) => void
+    points:number
+    setPoints: (value:number) => void
 }
 
-export function Resultado({name, setPage}:ResultadoProps) {
+export function Resultado({name, setPage, points, setPoints}:ResultadoProps) {
+
+    function handlePlayAgain() {
+        setPage("dificuldade")
+        setPoints(0)
+    }
+    
+    function handleBackMenu() {
+        setPage("inicio")
+        setPoints(0)
+    }
+
     return (
         <div className='pagina'>
             <div className='menu'>
@@ -15,11 +28,12 @@ export function Resultado({name, setPage}:ResultadoProps) {
                 </div>
                 <div className='resultado-points'>
                     <p>Você Acertou</p>
-                    <span>10/10</span>
+                    <span>{points}/10</span>
                 </div>
                 <div className='resultado-options'>
-                    <button onClick={() => setPage("dificuldade")}>Jogar Novamente</button>
-                    <button onClick={() => setPage("inicio")}>Voltar Ao Menu</button>
+                    <button onClick={handlePlayAgain}
+                        >Jogar Novamente</button>
+                    <button onClick={handleBackMenu}>Voltar Ao Menu</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import type { MultipleChoiceQuestion } from "../../../types/questions";
+import './multiple-choice.css'
 
 type MultipleChoiceProps = {
     question: MultipleChoiceQuestion
@@ -44,36 +45,41 @@ export function MultipleChoice({
       } 
 
 
-    return (
-        <div>
-            <h2>{question.question}</h2>
 
-            <div>
-                {question.options.map((option) => {
-                    const isSelected = selected === option.id;
-
-                    let className = "answer";
-        
-                    if (isSelected && feedback === "correct") {
-                    className += " answer-correct";
-                    } else if (isSelected && feedback === "wrong") {
-                    className += " answer-wrong";
-                    }
-
-                    return (
-                        <div>
-                            <button
-                                key={option.id}
-                                className={className}
-                                onClick={() => handleClick(option.id)}
-                                disabled={selected !== null}
-                                >
-                                {option.text}
-                            </button>
-                        </div>
-                    )
-                })}
-            </div>
+      return (
+        <div className="multiple-choice">
+          <h2>{question.question}</h2>
+      
+          <div className="answers">
+            {question.options.map((option) => {
+              const isSelected = selected === option.id;
+      
+              let className = "answer";
+      
+              if (isSelected && feedback === "correct") {
+                className += " answer-correct";
+              } else if (isSelected && feedback === "wrong") {
+                className += " answer-wrong";
+              }
+      
+              return (
+                <div key={option.id}>
+                  <button
+                    className={className}
+                    onClick={() => handleClick(option.id)}
+                    disabled={selected !== null}
+                  >
+                    {option.image && (
+                      <img src={option.image} alt={option.text} />
+                    )}
+      
+                    {option.text}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
-    ) 
+      );
+      
 }

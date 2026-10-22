@@ -46,6 +46,8 @@ export default function App() {
           <Resultado 
             name={name}
             setPage={setPage}
+            points={points}
+            setPoints={setPoints}
           />
         )}
         

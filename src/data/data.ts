@@ -181,11 +181,18 @@ export const questions = [
             { id: 'flower-8', text: 'Flor 8' },
         ],
         targets: [
-            { id: 'slot-1', text: 'Vaso 1', correctItemId: 'flower-1' },
-            { id: 'slot-2', text: 'Vaso 2', correctItemId: 'flower-2' },
-            { id: 'slot-3', text: 'Vaso 3', correctItemId: 'flower-3' },
-            { id: 'slot-4', text: 'Vaso 4', correctItemId: 'flower-4' },
-            { id: 'slot-5', text: 'Vaso 5', correctItemId: 'flower-5' },
+            {
+                id: 'vase',
+                text: 'Vaso',
+                multiple: true,
+                correctItemIds: [
+                    'flower-1',
+                    'flower-2',
+                    'flower-3',
+                    'flower-4',
+                    'flower-5',
+                ],
+            },
         ],
     },
     {

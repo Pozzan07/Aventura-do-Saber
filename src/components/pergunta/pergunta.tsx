@@ -52,7 +52,7 @@ export function Pergunta({setPage, points, setPoints, difficulty}:PerguntaProps)
                     <span>{points} pts</span>
                 </div>
             </div>
-            <div className='menu'>
+            <div>
                 <button onClick={() => handleNext()}>next</button>
             </div>
             {question.type === 'multiple-choice' ? (
