@@ -1,0 +1,232 @@
+.drag-drop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+    margin-top: 8%;
+}
+
+.drag-drop h2 {
+    margin: 0;
+    color: #333;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.question-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .question-header button {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+  }
+
+
+.drag-items,
+.drop-targets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+}
+
+.item-container {
+    display: flex;
+}
+
+.drag-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 100px;
+    min-height: 65px;
+    padding: 16px 22px;
+    border: 3px solid #FD72BE;
+    border-radius: 16px;
+    background: #fff;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+.drag-item:active {
+    cursor: grabbing;
+}
+
+.drag-item:disabled {
+    cursor: default;
+}
+
+.drag-item.dragging {
+    border-color: #FD72BE;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 15%);
+}
+
+.placed-source {
+    border-color: #b9c6d8;
+    background: #edf2f8;
+    cursor: pointer;
+}
+
+.drag-image,
+.target-image {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.target-image {
+    margin-bottom: 4px;
+}
+
+.drop-target {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 0;
+    min-height: 120px;
+    padding: 16px;
+    border: 3px dashed #b8c5d8;
+    border-radius: 18px;
+    background: #f6f8fc;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.drop-target.target-hover {
+    border-color: #FD72BE;
+    background: #e8f1ff;
+}
+
+.target-label {
+    color: #46536a;
+    font-weight: 700;
+    text-align: center;
+}
+
+.target-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.placed-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: #dceaff;
+    color: #234d8c;
+    font-weight: 600;
+}
+
+.placed-image {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.target-placeholder {
+    color: #929cad;
+    font-size: 0.95rem;
+}
+
+.drag-feedback {
+    position: absolute;
+    bottom: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.drag-feedback.correct {
+    color: #218548;
+}
+
+.drag-feedback.wrong {
+    color: #d53a3a;
+}
+
+.check-answer {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    background: #3978e8;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.check-answer:hover:not(:disabled) {
+    background: #285fc2;
+}
+
+.check-answer:disabled {
+    background: #b9c5d7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .drag-drop {
+        gap: 18px;
+        padding: 16px;
+    }
+
+    .drag-drop h2 {
+        font-size: 1.5rem;
+    }
+
+    .drag-items,
+    .drop-targets {
+        gap: 10px;
+    }
+
+    .drag-item {
+        min-width: 80px;
+        min-height: 55px;
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .drag-image,
+    .target-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .drop-target {
+        flex-basis: 100%;
+        min-height: 90px;
+    }
+
+    .placed-image {
+        width: 60px;
+        height: 60px;
+    }
+}
