@@ -31,7 +31,7 @@ Cada nível contém 10 perguntas. As respostas corretas valem 10 pontos, e ao fi
 Para desenvolvimento ou contribuição, é necessário ter Node.js 20.19+ (ou 22.12+) e npm instalados.
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone (https://github.com/Pozzan07/Curriculariza-o-grupo-17)
 cd Curriculariza-o-grupo-17
 npm install
 npm run dev
