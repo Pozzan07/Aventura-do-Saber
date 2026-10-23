@@ -60,10 +60,6 @@ O jogo possui 30 perguntas divididas em três níveis. As atividades combinam pe
 
 ---
 
-## 👥 Integrantes`r`n`r`nProjeto desenvolvido pelo **Grupo 17** como atividade de curricularização.
-
----
-
 ## 📁 Estrutura do Projeto
 
 ```text
