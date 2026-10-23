@@ -1,34 +1,37 @@
-type Difficulty = 'Facil' | 'Médio' | 'Difícil'
+export type Difficulty = 'Facil' | 'Médio' | 'Difícil'
 
-export interface MultipleChoiceQuestion {
+export interface QuestionBase {
     id: number
-    type: 'multiple-choice'
     difficulty: Difficulty
     question: string
-    options: { 
+    image?: string
+}
+
+export interface MultipleChoiceQuestion extends QuestionBase {
+    type: 'multiple-choice'
+    options: {
         id: string
         text: string
-        image?: string 
+        image?: string
     }[]
     correctAnswer: string
 }
-  
-  export type DragDropQuestion = {
-    id: number;
-    type: "drag-drop"
-    difficulty: Difficulty
-    question: string
+
+export interface DragDropQuestion extends QuestionBase {
+    type: 'drag-drop'
     items: {
-      id: string
-      text: string
+        id: string
+        text: string
+        image?: string
     }[]
     targets: {
-      id: string
-      text: string
-      correctItemId: string
+        id: string
+        text: string
+        image?: string
+        correctItemId?: string
+        correctItemIds?: string[]
+        multiple?: boolean
     }[]
-  };
-  
-  export type Question =
-    | MultipleChoiceQuestion
-    | DragDropQuestion
+}
+
+export type Question = MultipleChoiceQuestion | DragDropQuestion

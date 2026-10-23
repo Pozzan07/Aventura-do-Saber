@@ -10,6 +10,17 @@
     box-shadow: 6px 8px 0px #000000;
     border-radius: 24px;
     gap: 24px;
+    margin-top: 5%;
+  }
+
+  .image{
+    display: flex;
+    justify-content: center;
+    width: 200px;
+  }
+
+  .image img {
+    object-fit: contain;
   }
   
   .answers {
@@ -27,8 +38,8 @@
     justify-content: center;
     justify-self: center;
     gap: 12px;
-    min-height: 120px;
-    min-width: 120px;
+    min-height: 140px;
+    min-width: 140px;
     padding: 20px;
     border: 3px solid #dbe4f0;
     border-radius: 20px;

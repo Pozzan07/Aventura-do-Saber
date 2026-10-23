@@ -29,10 +29,12 @@ function DraggableItem({
     id,
     text,
     disabled,
+    image
 }: {
     id: string
     text: string
     disabled: boolean
+    image?:string
 }) {
     const { attributes, listeners, setNodeRef, transform, isDragging } =
         useDraggable({ id, disabled })
@@ -50,6 +52,7 @@ function DraggableItem({
             {...attributes}
             disabled={disabled}
         >
+            {image && <img src={image} alt="" className="drag-image" />}
             {text}
         </button>
     )
@@ -58,12 +61,14 @@ function DraggableItem({
 function DropTarget({
     id,
     text,
+    image,
     items,
     disabled,
 }: {
     id: string
     text: string
-    items: { id: string; text: string }[]
+    image?:string
+    items: { id: string; text: string; image?: string }[]
     disabled: boolean
 }) {
     const { isOver, setNodeRef } = useDroppable({
@@ -76,14 +81,19 @@ function DropTarget({
             ref={setNodeRef}
             className={`drop-target ${isOver ? 'target-hover' : ''}`}
         >
+            {image && <img src={image} alt="" className="target-image" />}
+
             <span className="target-label">{text}</span>
 
             <div className="target-items">
                 {items.length > 0 ? (
                     items.map(item => (
-                        <span className="placed-item" key={item.id}>
-                            {item.text}
-                        </span>
+                    <span className="placed-item" key={item.id}>
+                        {item.image && (
+                            <img src={item.image} alt="" className="placed-image" />
+                        )}
+                        {item.text}
+                    </span>
                     ))
                 ) : (
                     <span className="target-placeholder">
@@ -221,6 +231,7 @@ export function DragDrop({
                                     <DraggableItem
                                         id={item.id}
                                         text={item.text}
+                                        image={item.image}
                                         disabled={answered}
                                     />
                                 ) : (
@@ -231,6 +242,9 @@ export function DragDrop({
                                         disabled={answered}
                                         title="Clique para devolver o item"
                                     >
+                                        {item.image && (
+                                            <img src={item.image} alt="" className="drag-image" />
+                                        )}
                                         {item.text} ↩
                                     </button>
                                 )}
@@ -255,6 +269,7 @@ export function DragDrop({
                                 key={target.id}
                                 id={target.id}
                                 text={target.text}
+                                image={target.image}
                                 items={targetItems}
                                 disabled={answered}
                             />
@@ -262,14 +277,6 @@ export function DragDrop({
                     })}
                 </div>
             </DndContext>
-
-            {feedback && (
-                <p className={`drag-feedback ${feedback}`}>
-                    {feedback === 'correct'
-                        ? 'Muito bem! Resposta correta!'
-                        : 'Não foi dessa vez! Vamos para a próxima.'}
-                </p>
-            )}
 
             <button
                 type="button"
@@ -279,6 +286,14 @@ export function DragDrop({
             >
                 Confirmar resposta
             </button>
+
+            {feedback && (
+                <p className={`drag-feedback ${feedback}`}>
+                    {feedback === 'correct'
+                        ? 'Muito bem! Resposta correta!'
+                        : 'Não foi dessa vez! Vamos para a próxima.'}
+                </p>
+            )}
         </div>
     )
 }

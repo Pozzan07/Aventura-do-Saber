@@ -49,6 +49,10 @@ export function MultipleChoice({
       return (
         <div className="multiple-choice">
           <h2>{question.question}</h2>
+
+          <div className="image">
+            <img src={question.image} alt="" />
+          </div>
       
           <div className="answers">
             {question.options.map((option) => {

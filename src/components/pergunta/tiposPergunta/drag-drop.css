@@ -7,6 +7,7 @@
     margin: 0 auto;
     padding: 24px;
     box-sizing: border-box;
+    margin-top: 8%;
 }
 
 .drag-drop h2 {
@@ -32,6 +33,11 @@
 }
 
 .drag-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     min-width: 100px;
     min-height: 65px;
     padding: 16px 22px;
@@ -65,14 +71,26 @@
     cursor: pointer;
 }
 
+.drag-image,
+.target-image {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.target-image {
+    margin-bottom: 4px;
+}
+
 .drop-target {
     display: flex;
+    flex: 1 1 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    flex: 1 1 180px;
-    min-width: 140px;
+    min-width: 0;
     min-height: 120px;
     padding: 16px;
     border: 3px dashed #b8c5d8;
@@ -100,11 +118,21 @@
 }
 
 .placed-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
     padding: 8px 12px;
     border-radius: 10px;
     background: #dceaff;
     color: #234d8c;
     font-weight: 600;
+}
+
+.placed-image {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
 }
 
 .target-placeholder {
@@ -113,10 +141,12 @@
 }
 
 .drag-feedback {
-    margin: 0;
+    position: absolute;
+    bottom: 0;
     font-size: 1.2rem;
     font-weight: 700;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .drag-feedback.correct {
@@ -149,8 +179,8 @@
 
 @media (max-width: 600px) {
     .drag-drop {
-        padding: 16px;
         gap: 18px;
+        padding: 16px;
     }
 
     .drag-drop h2 {
@@ -169,8 +199,19 @@
         font-size: 1rem;
     }
 
+    .drag-image,
+    .target-image {
+        width: 80px;
+        height: 80px;
+    }
+
     .drop-target {
         flex-basis: 100%;
         min-height: 90px;
+    }
+
+    .placed-image {
+        width: 60px;
+        height: 60px;
     }
 }

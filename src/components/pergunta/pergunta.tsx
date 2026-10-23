@@ -32,7 +32,7 @@ export function Pergunta({setPage, points, setPoints, difficulty}:PerguntaProps)
 
     function handleAnswer(isCorrect: boolean) {
         if (isCorrect) {
-            setPoints(points + 10)
+            setPoints(points + 1)
         }
     }
 
@@ -51,9 +51,6 @@ export function Pergunta({setPage, points, setPoints, difficulty}:PerguntaProps)
                 <div className='pontos-info'>
                     <span>{points} pts</span>
                 </div>
-            </div>
-            <div>
-                <button onClick={() => handleNext()}>next</button>
             </div>
             {question.type === 'multiple-choice' ? (
                 <MultipleChoice
