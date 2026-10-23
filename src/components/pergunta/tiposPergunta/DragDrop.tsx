@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { speak, stopSpeaking } from '../../../utils/speak'
 import {
     DndContext,
     PointerSensor,
@@ -136,6 +137,14 @@ export function DragDrop({
         }
     }, [question.id])
 
+    useEffect(() => {
+        speak(question.question)
+    
+        return () => {
+            stopSpeaking()
+        }
+    }, [question.id])
+
     function handleDragEnd(event: DragEndEvent) {
         if (answered || !event.over) return
 
@@ -218,7 +227,17 @@ export function DragDrop({
 
     return (
         <div className="drag-drop">
+            <div className='question-header'>
             <h2>{question.question}</h2>
+            <button
+                  type="button"
+                  onClick={() => speak(question.question)}
+                  aria-label="Repetir pergunta"
+                  title="Repetir pergunta"
+              >
+                  🔊
+              </button>
+            </div>
 
             <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
                 <div className="drag-items">

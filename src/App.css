@@ -17,3 +17,14 @@
   border-radius: 24px;
   transform: rotate(-1.64deg);
 }
+
+.mute-btn {
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  font-size: 3rem;
+  background: none;
+  border: none;
+  margin-right: 50px;
+}

@@ -20,10 +20,9 @@ import balaoVermelho from '../assets/facil/pergunta07/balao_vermelho.png'
 import balaoAzul from '../assets/facil/pergunta07/bolao_azul.png'
 import ninho from '../assets/facil/pergunta08/ninho.png'
 import passaro from '../assets/facil/pergunta08/passaro.png'
-import porco from '../assets/facil/pergunta09/porco.png'
-import sombraPorco from '../assets/facil/pergunta09/sombra_porco.png'
-import estrelaL from '../assets/facil/pergunta10/estrela_L.png'
-import estrelaR from '../assets/facil/pergunta10/estrela_R.png'
+import banana from '../assets/facil/pergunta10/banana.png'
+import kiwi from '../assets/facil/pergunta10/kiwi.png'
+import maca from '../assets/facil/pergunta10/maca.png'
 // MÉDIO — imagens das perguntas 11–20
 import layout11 from '../assets/medio/pergunta11/layout.png'
 import casa from '../assets/medio/pergunta12/casa.png'
@@ -58,6 +57,7 @@ import coelhoMarrom from '../assets/medio/pergunta19/coelho_marrom.png'
 import brinquedoFinal from '../assets/medio/pergunta20/brinquedo-final.png'
 import brinquedoFrente from '../assets/medio/pergunta20/brinquedo-frente.png'
 import brinquedoMeio from '../assets/medio/pergunta20/brinquedo-meio.png'
+// DIFÍCIL imagens das perguntas 21-30
 import boi from '../assets/dificil/pergunta21/boi.png'
 import hipopotamo from '../assets/dificil/pergunta21/hipopotamo.png'
 import silabaCa from '../assets/dificil/pergunta22/ca.png'
@@ -68,11 +68,12 @@ import alternativaE from '../assets/dificil/pergunta23/alternativa-e.png'
 import alternativaO from '../assets/dificil/pergunta23/alternativa-o.png'
 import bola23 from '../assets/dificil/pergunta23/bola.png'
 import arvore from '../assets/dificil/pergunta24/arvore.png'
+import arvoregrama from '../assets/dificil/pergunta24/arvoregrama.png'
 import cachorro24 from '../assets/dificil/pergunta24/cachorro.png'
 import passaro24 from '../assets/dificil/pergunta24/passaro.png'
 import alvoDireita from '../assets/dificil/pergunta25/alvo-direita.png'
+import alvoEsquerda from '../assets/dificil/pergunta25/alvo-esquerda.png'
 import carrinho25 from '../assets/dificil/pergunta25/carrinho.png'
-import pista from '../assets/dificil/pergunta25/pista.png'
 import numero26_1 from '../assets/dificil/pergunta26/1.png'
 import numero26_2 from '../assets/dificil/pergunta26/2.png'
 import numero26_3 from '../assets/dificil/pergunta26/3.png'
@@ -80,7 +81,9 @@ import numero27_1 from '../assets/dificil/pergunta27/1.png'
 import numero27_2 from '../assets/dificil/pergunta27/2.png'
 import numero27_3 from '../assets/dificil/pergunta27/3.png'
 import espacoVazio from '../assets/dificil/pergunta28/espaco-vazio.png'
+import espacoVazioCirculo from '../assets/dificil/pergunta28/espaço-vazio c.png'
 import quadrado from '../assets/dificil/pergunta28/quadrado.png'
+import circulo from '../assets/dificil/pergunta28/circulo.png'
 import bandejaBrinquedos from '../assets/dificil/pergunta29/bandeja-brinquedos.png'
 import bandejaComidas from '../assets/dificil/pergunta29/bandeja-comidas.png'
 import bola29 from '../assets/dificil/pergunta29/bola.png'
@@ -187,23 +190,28 @@ export const questions = [
     },
     {
         id: 9,
-        type: 'drag-drop',
+        type: 'multiple-choice',
         difficulty: 'Facil',
-        question: 'Encontre a sombra do porquinho.',
-        items: [{ id: 'pig', text: 'Porquinho', image: porco }],
-        targets: [
-            { id: 'pig-shadow', text: 'Sombra do porquinho', image: sombraPorco, correctItemId: 'pig' },
+        question: 'Qual desses animais produz leite.',
+        options: [
+            { id: 'cow', text: 'Vaca', image: vaca },
+            { id: 'rabbit', text: 'Coelho', image: coelhoBranco },
+            { id: 'dog', text: 'Cachorro', image: cachorro },
         ],
+        correctAnswer: 'cow',
     },
+
     {
         id: 10,
-        type: 'drag-drop',
+        type: 'multiple-choice',
         difficulty: 'Facil',
-        question: 'Junte as duas partes da estrela.',
-        items: [{ id: 'star-half', text: 'Metade da estrela', image: estrelaR }],
-        targets: [
-            { id: 'star', text: 'Estrela completa', image: estrelaL, correctItemId: 'star-half' },
+        question: 'Qual dessas frutas é geralmente amarela quando está madura.',
+        options: [
+            { id: 'maca', text: 'Maça', image: maca },
+            { id: 'kiwi', text: 'Kiwi', image: kiwi },
+            { id: 'banana', text: 'Banana', image: banana },
         ],
+        correctAnswer: 'banana',
     },
     // MÉDIO (11–20)
     // MÉDIO (11–20)
@@ -298,7 +306,7 @@ export const questions = [
         id: 17,
         type: 'drag-drop',
         difficulty: 'Médio',
-        question: 'Guarde os brinquedos VERMELHOS na caixa.',
+        question: 'Guarde os brinquedos VERMELHOS na caixa VERMELHA e os AZUIS na caixa AZUL.',
         items: [
             { id: 'red-ball', text: 'Bola vermelha', image: bolaVermelha },
             { id: 'red-car', text: 'Carrinho vermelho', image: carroVermelho },
@@ -359,6 +367,7 @@ export const questions = [
         options: [
             { id: 'ox', text: 'BOI', image: boi },
             { id: 'hippo', text: 'HIPOPÓTAMO', image: hipopotamo },
+            { id: 'coelho', text: 'COELHO', image: coelhoMarrom}
         ],
         correctAnswer: 'hippo',
     },
@@ -368,9 +377,9 @@ export const questions = [
         difficulty: 'Difícil',
         question: 'Forme a palavra MA-CA-CO.',
         items: [
+            { id: 'co', text: '', image: silabaCo },
             { id: 'ma', text: '', image: silabaMa },
             { id: 'ca', text: '', image: silabaCa },
-            { id: 'co', text: '', image: silabaCo },
         ],
         targets: [
             { id: 'syllable-1', text: '1ª sílaba', correctItemId: 'ma' },
@@ -402,7 +411,7 @@ export const questions = [
         ],
         targets: [
             { id: 'above-tree', text: 'Em cima da árvore', image: arvore, correctItemId: 'bird' },
-            { id: 'below-tree', text: 'Embaixo da árvore', image: arvore, correctItemId: 'dog' },
+            { id: 'below-tree', text: 'Embaixo da árvore', image: arvoregrama, correctItemId: 'dog' },
         ],
     },
     {
@@ -410,9 +419,9 @@ export const questions = [
         type: 'drag-drop',
         difficulty: 'Difícil',
         question: 'Mova o carrinho para a DIREITA.',
-        image: pista,
         items: [{ id: 'car', text: 'Carrinho', image: carrinho25 }],
         targets: [
+            { id: 'left', text: 'Esquerda', image: alvoEsquerda, correctItemId: '' },
             { id: 'right', text: 'Direita', image: alvoDireita, correctItemId: 'car' },
         ],
     },
@@ -446,9 +455,13 @@ export const questions = [
         difficulty: 'Difícil',
         question: 'Complete a sequência: Círculo, Quadrado, Círculo, __.',
         image: espacoVazio,
-        items: [{ id: 'square', text: 'Quadrado', image: quadrado }],
+        items: [
+            { id: 'square', text: 'Quadrado', image: quadrado },
+            { id: 'circle', text: 'Circulo', image: circulo }
+        ],
         targets: [
             { id: 'missing-shape', text: 'Figura faltando', image: espacoVazio, correctItemId: 'square' },
+            
         ],
     },
     {

@@ -18,6 +18,21 @@
     line-height: 1.4;
 }
 
+.question-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .question-header button {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+  }
+
+
 .drag-items,
 .drop-targets {
     display: flex;

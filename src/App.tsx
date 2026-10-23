@@ -4,7 +4,7 @@ import { Inicio } from './components/inicio/inicio.tsx'
 import { Dificuldade } from './components/dificuldade/dificuldade.tsx'
 import { Pergunta } from './components/pergunta/pergunta.tsx'
 import { Resultado } from './components/resultado/resultado.tsx'
-
+import { toggleMute, isMuted } from './utils/speak.ts'
 
 export default function App() {
 
@@ -12,10 +12,22 @@ export default function App() {
   const [name, setName] = useState('')
   const [difficulty, setDifficulty] = useState('')
   const [points, setPoints] = useState(0)
+  const [muted, setMuted] = useState(isMuted)
 
+  function handleMute() {
+      setMuted(toggleMute())
+  }
 
   return (
     <div>
+
+        <button
+            className='mute-btn'
+            type="button"
+            onClick={handleMute}
+        >
+            {muted ? '🔇' : '🔊'}
+        </button>
 
         {page === "inicio" && (
           <Inicio 

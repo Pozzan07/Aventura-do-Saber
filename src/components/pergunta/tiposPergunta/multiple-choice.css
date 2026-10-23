@@ -13,6 +13,20 @@
     margin-top: 5%;
   }
 
+  .question-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .question-header button {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+  }
+
   .image{
     display: flex;
     justify-content: center;

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { speak, stopSpeaking } from '../../../utils/speak.ts'
 import type { MultipleChoiceQuestion } from "../../../types/questions";
 import './multiple-choice.css'
 
@@ -29,6 +30,14 @@ export function MultipleChoice({
         };
       }, [question.id]);
 
+      useEffect(() => {
+        speak(question.question)
+    
+        return () => {
+            stopSpeaking()
+        }
+    }, [question.id])
+
       function handleClick(answerId: string) {
         if (selected !== null) return;
 
@@ -48,7 +57,17 @@ export function MultipleChoice({
 
       return (
         <div className="multiple-choice">
-          <h2>{question.question}</h2>
+          <div className="question-header">
+              <h2>{question.question}</h2>
+              <button
+                  type="button"
+                  onClick={() => speak(question.question)}
+                  aria-label="Repetir pergunta"
+                  title="Repetir pergunta"
+              >
+                  🔊
+              </button>
+          </div>
 
           <div className="image">
             <img src={question.image} alt="" />
